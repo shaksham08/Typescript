@@ -362,3 +362,115 @@ function isOlder(user: User, checkAge: number) {
   return checkAge > user.age;
 }
 ```
+
+# Return Type in Functions
+
+```ts
+function add(n1: number, n2: number): number {
+  const result = n1 + n2;
+  return result;
+}
+```
+
+- This tells typescript that this function will always return a number
+
+```ts
+function printResult(n1: number): void {
+  console.log(n1);
+}
+```
+
+```ts
+function add(n1: number, n2: number): number {
+  const result = n1 + n2;
+  return result;
+}
+
+function printResult(n1: number): void {
+  console.log(n1);
+}
+
+let combineValue: Function;
+
+combineValue = add;
+
+console.log(combineValue(10, 10));
+```
+
+- There is issue with this code now as `combineValue` can now be pointed to any function and that function may not accept two arguments so then it will break at runtime.
+
+- So dats why we have `function types` in typescript.
+
+```ts
+function add(n1: number, n2: number): number {
+  const result = n1 + n2;
+  return result;
+}
+
+function printResult(n1: number): void {
+  console.log(n1);
+}
+
+let combineValue: (a: number, b: number) => number;
+
+combineValue = add;
+
+console.log(combineValue(10, 10));
+```
+
+# Function Types and callbacks
+
+```ts
+function add(n1: number, n2: number) {
+  return n1 + n2;
+}
+
+function printResult(num: number): void {
+  console.log("Result: " + num);
+}
+
+function addAndHandle(n1: number, n2: number, cb: (num: number) => void) {
+  const result = n1 + n2;
+  cb(result);
+}
+
+printResult(add(5, 12));
+
+let combineValues: (a: number, b: number) => number;
+
+combineValues = add;
+// combineValues = printResult;
+// combineValues = 5;
+
+console.log(combineValues(8, 8));
+
+// let someValue: undefined;
+
+addAndHandle(10, 20, (result) => {
+  console.log(result);
+});
+```
+
+- _callback functions can return something, even if the argument on which they're passed does NOT expect a returned value._
+
+# unknown and never type
+
+```ts
+let userInput: unknown;
+let userName: string;
+
+userInput = 5;
+userInput = "Max";
+if (typeof userInput === "string") {
+  userName = userInput;
+}
+
+function generateError(message: string, code: number): never {
+  throw { message: message, errorCode: code };
+  // while (true) {}
+}
+
+generateError("An error occurred!", 500);
+```
+
+- never tells that that it will never return something eg. an infinite looop inside fucntion etc.
