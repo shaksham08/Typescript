@@ -121,3 +121,13 @@ accounting.printReports();
 
 // accountingCopy.describe();
 ```
+
+## Getters And Setters
+
+[GettersAndSetters](https://www.typescripttutorial.net/typescript-tutorial/typescript-getters-setters/)
+
+## Static Method in class
+
+[static_in_class](https://www.typescripttutorial.net/typescript-tutorial/typescript-getters-setters/)
+
+Note:- We cannot access static members inside a non static methods.
