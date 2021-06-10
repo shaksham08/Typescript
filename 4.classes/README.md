@@ -131,3 +131,11 @@ accounting.printReports();
 [static_in_class](https://www.typescripttutorial.net/typescript-tutorial/typescript-getters-setters/)
 
 Note:- We cannot access static members inside a non static methods.
+
+## Abstract
+
+[Abstract](https://www.typescriptlang.org/docs/handbook/classes.html#abstract-classes)
+
+## Singleton / Private Constructor
+
+[singleton](https://refactoring.guru/design-patterns/singleton/typescript/example)
